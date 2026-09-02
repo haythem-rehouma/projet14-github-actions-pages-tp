@@ -30,12 +30,21 @@ jobs:
         uses: actions/checkout@v4
 
       # Active GitHub Pages en mode "GitHub Actions" automatiquement.
-      # Sans cette etape, il faudrait le faire a la main dans Settings -> Pages,
-      # et un mauvais reglage ("Deploy from a branch") ferait echouer le deploiement.
+      # - configure-pages cree la config Pages si elle n'existe pas encore ;
+      # - l'etape API force le mode "workflow" si le depot etait reste en mode
+      #   "Deploy from a branch" (sinon GitHub servirait le README via Jekyll).
       - name: Configurer GitHub Pages
         uses: actions/configure-pages@v4
         with:
           enablement: true
+
+      - name: Forcer Pages en mode workflow
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api "repos/${GITHUB_REPOSITORY}/pages" -X PUT -f build_type=workflow \
+            && echo "Pages est maintenant en mode workflow" \
+            || echo "AVERTISSEMENT : bascule impossible via l'API — verifier Settings -> Pages -> Source = GitHub Actions"
 
       - name: Installer Python 3.12
         uses: actions/setup-python@v5
