@@ -1,11 +1,9 @@
 # Projet 14 — GitHub Actions & GitHub Pages : publier un site en un push
 
-> **Niveau :** débutant → intermédiaire · **Durée :** 1 h 30 à 2 h · **Outils :** Git, GitHub, Python 3.10+, un navigateur
 
 ---
 
-## En une phrase
-
+## Résumé
 Un **mini-site statique** dont les couleurs sont pilotées par `site/config.json` et **deux workflows GitHub Actions déjà écrits**. Vous clonez, vous poussez, votre site est en ligne. Vous changez une couleur dans `config.json`, vous re-poussez, la page publique se met à jour toute seule en 40 secondes.
 
 Aucun serveur à administrer, aucun budget cloud, **zéro configuration manuelle** sur Pages : le workflow s'occupe de tout.
