@@ -1,6 +1,5 @@
 # Projet 14 — GitHub Actions & GitHub Pages : publier un site en un push
 
-> **Niveau :** débutant → intermédiaire · **Durée :** 1 h 30 à 2 h · **Outils :** Git, GitHub, Python 3.10+, un navigateur
 
 ---
 
