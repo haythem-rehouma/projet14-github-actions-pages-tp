@@ -1,9 +1,9 @@
 {
   "titre": "Mon premier site pilote par GitHub Actions",
   "sous_titre": "Change une couleur, fais un push, et regarde GitHub Pages se mettre a jour tout seul.",
-  "couleur_fond": "#0f172a",
+  "couleur_fond": "#312e81",
   "couleur_texte": "#f1f5f9",
   "couleur_accent": "#38bdf8",
-  "auteur": "Etudiant du cours 420-D30-BB",
-  "version": "1.0.0"
+  "auteur": "Professeur du cours 420-D30-BB",
+  "version": "1.0.1"
 }
