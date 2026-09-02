@@ -1,0 +1,99 @@
+:root {
+  --fond: {{COULEUR_FOND}};
+  --texte: {{COULEUR_TEXTE}};
+  --accent: {{COULEUR_ACCENT}};
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+
+.carte {
+  max-width: 900px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 40px 44px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.etiquette {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
+  color: var(--texte);
+}
+
+.sous {
+  color: var(--texte);
+  opacity: 0.75;
+  margin: 0 0 32px;
+  font-size: 1.05rem;
+}
+
+.infos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.tuile {
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 4px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 8px;
+}
+
+.cle {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.val {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.pied {
+  color: var(--texte);
+  opacity: 0.6;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{TITRE}}</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="carte">
+    <span class="etiquette">v{{VERSION}} — publie le {{DATE_BUILD}}</span>
+    <h1>{{TITRE}}</h1>
+    <p class="sous">{{SOUS_TITRE}}</p>
+
+    <section class="infos">
+      <div class="tuile">
+        <div class="cle">Auteur</div>
+        <div class="val">{{AUTEUR}}</div>
+      </div>
+      <div class="tuile">
+        <div class="cle">Commit SHA</div>
+        <div class="val"><code>{{COMMIT_SHA}}</code></div>
+      </div>
+      <div class="tuile">
+        <div class="cle">Numero du run</div>
+        <div class="val">#{{NUMERO_RUN}}</div>
+      </div>
+      <div class="tuile">
+        <div class="cle">Branche</div>
+        <div class="val"><code>{{BRANCHE}}</code></div>
+      </div>
+    </section>
+
+    <p class="pied">Cette page a ete generee automatiquement par GitHub Actions
+    a partir de <code>site/config.json</code>. Change la couleur de fond,
+    <code>git push</code>, et l'action redeploiera cette page.</p>
+  </main>
+</body>
+</html>

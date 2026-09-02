@@ -1,0 +1,55 @@
+# Workflow de deploiement GitHub Pages.
+# Se declenche a chaque push sur main ou manuellement depuis l'onglet Actions.
+#
+# Deux jobs :
+#   - construire : lit site/config.json + gabarits, produit dist/
+#   - deployer   : publie dist/ sur https://<user>.github.io/<depot>/
+
+name: Deployer sur GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construire:
+    name: Construire le site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generer dist/ a partir de config.json
+        run: python outils/build.py
+
+      - name: Preparer le dossier a publier
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deployer:
+    name: Publier sur GitHub Pages
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.publication.outputs.page_url }}
+    steps:
+      - name: Publier l'artefact
+        id: publication
+        uses: actions/deploy-pages@v4

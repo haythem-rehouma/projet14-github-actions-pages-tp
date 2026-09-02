@@ -1,0 +1,34 @@
+# Workflow de verification : bloque toute PR dont config.json est invalide.
+# Se declenche sur pull_request vers main et sur push des autres branches.
+# Ne publie RIEN : execute uniquement le build en mode dry-run pour prouver
+# que le fichier est valide.
+
+name: Verifier la configuration
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches-ignore: [main]
+
+jobs:
+  linter:
+    name: Valider config.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Construire en dry-run (build.py fait toutes les validations)
+        run: python outils/build.py
+
+      - name: Verifier que dist/ est bien genere
+        run: |
+          test -f dist/index.html
+          test -f dist/css/style.css
+          echo "OK - site construit sans erreur"
