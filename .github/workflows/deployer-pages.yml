@@ -29,6 +29,14 @@ jobs:
       - name: Recuperer le code
         uses: actions/checkout@v4
 
+      # Active GitHub Pages en mode "GitHub Actions" automatiquement.
+      # Sans cette etape, il faudrait le faire a la main dans Settings -> Pages,
+      # et un mauvais reglage ("Deploy from a branch") ferait echouer le deploiement.
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v4
+        with:
+          enablement: true
+
       - name: Installer Python 3.12
         uses: actions/setup-python@v5
         with:
